@@ -1,0 +1,417 @@
+/* ============================================================
+   Route & Itinerary Fixes
+   ============================================================ */
+
+.route-experience {
+  position: relative;
+  background: #000;
+  padding-bottom: 0;
+}
+
+.route__condition-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-2xl);
+}
+
+.route__condition-icon {
+  font-size: 1.5rem;
+}
+
+.route__condition-notice p {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  margin: 0;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   Sticky Interactive Wrapper
+   ============================================================ */
+
+.route-scroll-space {
+  /* Provides scrolling distance */
+  height: 250vh;
+  position: relative;
+  margin-bottom: var(--space-xl);
+}
+
+.route-sticky-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(30, 32, 35, 0.5) 0%, #000 70%);
+}
+
+
+/* ============================================================
+   Split Layout Strategy
+   ============================================================ */
+
+.route-split-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  height: 100%;
+  padding-block: var(--space-2xl);
+  gap: var(--space-lg);
+}
+
+@media (min-width: 900px) {
+  .route-split-layout {
+    grid-template-columns: 42fr 58fr; /* Exactly 42% left panel */
+    gap: var(--space-2xl);
+  }
+}
+
+/* LEFT COLUMN: ITINERARY CONTENT */
+.route-content-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  height: 60vh; /* Mobile height */
+  width: 100%;
+}
+
+@media (min-width: 900px) {
+  .route-content-col {
+    height: 100%;
+    width: 100%; /* Uses the full width of its 42% grid column */
+    max-width: 480px;
+    padding-right: var(--space-xl);
+  }
+}
+
+/* Stacked Day Cards */
+.route-days-stack {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.route-day-card {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  transform: translateY(40px); /* Start lower for slide-up effect */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  pointer-events: none;
+}
+
+.route-day-card.is-active {
+  transform: translateY(-50%);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* 1. Day Indicator Eyebrow */
+.route-day-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+.route-day-dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-amber);
+  border-radius: 50%;
+}
+
+/* 2. Elegant Title */
+.route-day-title {
+  font-family: var(--font-display);
+  font-size: var(--text-4xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: var(--space-lg);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  white-space: pre-line;
+}
+
+/* 3. Route Line */
+.route-day-path-line {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 11px; /* Even smaller typography */
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: var(--space-xl);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: var(--space-lg);
+  line-height: 1.6;
+}
+
+.waypoint-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.waypoint-text.is-primary {
+  color: #fff;
+  font-weight: 600;
+}
+
+.waypoint-arrow {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* 4. Three-Column Metrics */
+.route-day-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.metric-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.metric-val {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--color-glacier);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.metric-lbl {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* 5. Editorial Description */
+.route-day-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: var(--space-xl);
+  max-width: 100%;
+}
+
+/* 6. Terrain Note */
+.route-day-terrain {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+.route-final-state {
+  margin-top: var(--space-md);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-amber);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  animation: fade-in 1s ease forwards;
+}
+
+
+/* RIGHT COLUMN: VISUAL SVG ROUTE */
+.route-map-col {
+  position: relative;
+  width: 100%;
+  height: 40vh; /* Mobile height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 900px) {
+  .route-map-col {
+    height: 100%;
+    max-width: 1000px; /* Constrain SVG */
+  }
+}
+
+.route-map-topo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: scale(1.15) translateY(-2%);
+  transform-origin: center;
+}
+
+.route-map-svg {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform: scale(1.15) translateY(-2%);
+  transform-origin: center;
+}
+
+/* Path drawing */
+.route-path-base {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 2;
+  stroke-dasharray: 4 6;
+}
+
+.route-path-active {
+  stroke: var(--color-glacier);
+  stroke-width: 4;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 12px var(--color-glacier));
+  will-change: stroke-dashoffset;
+}
+
+/* Node States */
+.route-node {
+  transition: all 0.3s ease;
+}
+
+.route-node-marker {
+  fill: #1a1a1a;
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 2;
+  transition: all 0.3s ease;
+}
+
+.route-node-pulse {
+  fill: none;
+  stroke: var(--color-glacier);
+  stroke-width: 1;
+  opacity: 0;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.route-node-label {
+  fill: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+/* 1. Upcoming State */
+.route-node.is-upcoming .route-node-marker {
+  fill: #1a1a1a;
+  stroke: rgba(255, 255, 255, 0.2);
+}
+.route-node.is-upcoming .route-node-label {
+  opacity: 0.3;
+  transform: translateY(0);
+}
+
+/* 2. Active State */
+.route-node.is-active .route-node-marker {
+  fill: var(--color-glacier);
+  stroke: #fff;
+  stroke-width: 3;
+}
+.route-node.is-active .route-node-pulse {
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+.route-node.is-active .route-node-label {
+  opacity: 1;
+  transform: translateY(0);
+  fill: var(--color-glacier);
+}
+
+/* 3. Completed State */
+.route-node.is-completed .route-node-marker {
+  fill: var(--color-glacier);
+  stroke: var(--color-glacier);
+}
+.route-node.is-completed .route-node-label {
+  opacity: 0.7;
+  transform: translateY(0);
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Traveller Marker */
+.route-traveller {
+  fill: var(--color-amber);
+  filter: drop-shadow(0 0 8px var(--color-amber));
+  will-change: cx, cy;
+}
+
+
+/* ============================================================
+   Reduced Motion Fallback
+   ============================================================ */
+
+.route-reduced-motion-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.rm-day {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+}
+
+.rm-day h3 {
+  font-size: var(--text-xl);
+  color: var(--color-glacier);
+  margin-bottom: var(--space-xs);
+}
+
+.rm-meta {
+  color: var(--color-amber);
+  font-family: var(--font-display);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.05em;
+}

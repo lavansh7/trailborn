@@ -1,0 +1,59 @@
+/* ============================================================
+   Cinematic Bending Marquee
+   ============================================================ */
+
+.bending-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  padding: var(--space-xl) 0;
+  background: var(--color-bg);
+  /* CRITICAL: overflow-x: clip ensures the giant SVG doesn't break page width */
+  overflow-x: clip;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.bending-marquee-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 100vw; /* Keeps it locked to viewport so child can overflow safely */
+}
+
+.bending-marquee-svg {
+  /* On desktop, spans 120vw to bleed off edges naturally */
+  width: 120vw;
+  /* Minimum width prevents the SVG from shrinking so much that text becomes illegible on mobile */
+  min-width: 1200px; /* Reduced from 1600px */
+  max-height: 260px; /* Reduced to tightly wrap the gentler curve */
+  /* Very subtle drop shadow to ground the ribbon */
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
+  /* Subtly breathes vertically to feel like physical fabric */
+  animation: ribbon-breathe 8s ease-in-out infinite alternate;
+}
+
+.bending-marquee-text {
+  font-family: var(--font-display);
+  font-size: 32px; /* Reduced from 48px */
+  font-weight: 600;
+  fill: #111; /* Deep charcoal for massive contrast on the white ribbon */
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@keyframes ribbon-breathe {
+  0% { transform: translateY(-5px); }
+  100% { transform: translateY(5px); }
+}
+
+/* ============================================================
+   Reduced Motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .bending-marquee-svg {
+    animation: none;
+  }
+}

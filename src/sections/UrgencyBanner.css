@@ -1,0 +1,59 @@
+.urgency {
+  background: var(--color-bg);
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.urgency-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.urgency__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.urgency__highlight {
+  color: var(--color-glacier);
+}
+
+.urgency__dot {
+  color: rgba(255,255,255,0.2);
+}
+
+.urgency__badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+}
+
+.urgency__badge-label {
+  font-weight: 500;
+  color: #fff;
+}
+
+.urgency__badge-value {
+  font-weight: 700;
+  color: var(--color-amber);
+}
+
+@media (max-width: 768px) {
+  .urgency-container {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .urgency__dot {
+    display: none;
+  }
+}
