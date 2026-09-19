@@ -51,7 +51,13 @@
 }
 
 .hero__main {
-  max-width: 600px;
+  max-width: 640px;
+}
+
+@media (min-width: 1024px) {
+  .hero__main {
+    max-width: 900px; /* Give desktop more breathing room */
+  }
 }
 
 .hero__eyebrow {
@@ -189,8 +195,22 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
+  .hero {
+    padding-top: 80px;
+  }
   .hero__bottom {
     display: none;
+  }
+  .hero__headline {
+    font-size: clamp(2rem, 10vw, 2.5rem);
+    letter-spacing: -0.01em;
+  }
+  .hero__sub {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-lg);
+  }
+  .hero__content {
+    padding-bottom: var(--space-lg);
   }
 }

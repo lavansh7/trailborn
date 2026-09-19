@@ -19,7 +19,7 @@ export default function WhoShouldJoin() {
               You should consider this trek if you have prior high-altitude trekking experience, a solid base level of fitness, and are comfortable spending multiple nights in tents at elevations above 3,000 m.
             </p>
             <p className="who__text">
-              This trek is best suited for those who want to go beyond well-trodden tourist trails and experience the Dhauladhar range as genuine mountain terrain — not as a packaged day trip.
+              This trek is best suited for those who want to go beyond well-trodden tourist trails and experience the Dhauladhar range as genuine mountain terrain, not as a packaged day trip.
             </p>
           </div>
 

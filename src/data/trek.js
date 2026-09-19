@@ -1,6 +1,6 @@
 export const trek = {
   name: '7 Lakes Trek',
-  fullName: 'TrailBorn — 7 Lakes Trek',
+  fullName: 'TrailBorn | 7 Lakes Trek',
   tagline: 'Seven Lakes. One Ridge. Zero Compromises.',
   region: 'Dhauladhar Range, Himachal Pradesh',
   start: 'McLeod Ganj',
@@ -22,10 +22,10 @@ export const trek = {
   style: 'Alpine-style, self-sufficient, mobile camps',
   heroHeadline: 'Seven Lakes. One Ridge. Zero Compromises.',
   heroSubheadline:
-    'An alpine-style trek across the hidden glacial lakes of the Dhauladhar range — McLeod Ganj to Kareri, 35 km of true high-altitude wilderness.',
+    'An alpine-style trek across the hidden glacial lakes of the Dhauladhar range: McLeod Ganj to Kareri, 35 km of true high-altitude wilderness.',
   heroCta: 'Enquire Now',
   heroScrollCue: 'Discover the Route ↓',
   routeConditionNote:
     'The exact lakes covered each day may shift with weather, snow conditions and trail status, with the trek lead making the final call.',
-  footerTagline: 'TrailBorn — Dhauladhar, on foot.',
+  footerTagline: 'TrailBorn | Dhauladhar, on foot.',
 };

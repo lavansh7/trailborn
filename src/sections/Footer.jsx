@@ -15,17 +15,9 @@ export default function Footer() {
         <div className="footer__links">
           <div className="footer__col">
             <h4 className="footer__col-title">Contact</h4>
-            <a className="footer__link" href="mailto:hello@trailborn.in">
-              hello@trailborn.in
+            <a className="footer__link" href="mailto:3_favours_glads@icloud.com">
+              3_favours_glads@icloud.com
             </a>
-          </div>
-
-          <div className="footer__col">
-            <h4 className="footer__col-title">Social</h4>
-            <div className="footer__social">
-              <a className="footer__link" href="#" aria-label="Instagram">Instagram</a>
-              <a className="footer__link" href="#" aria-label="YouTube">YouTube</a>
-            </div>
           </div>
         </div>
 

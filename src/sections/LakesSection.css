@@ -33,26 +33,8 @@
 }
 
 /* 
-  On mobile, we discard the sticky/pinned logic and fallback to a 
-  natural vertical scroll of viewport-height panels to guarantee 
-  smooth scrolling and performance.
+  Mobile will now retain the same sticky crossfade logic as desktop.
 */
-@media (max-width: 900px) {
-  .lakes-cinematic-wrapper {
-    height: auto !important; /* Override JS inline height */
-  }
-
-  .lakes-cinematic-sticky {
-    position: relative;
-    height: auto;
-    overflow: visible;
-  }
-
-  .lakes-chapters {
-    display: flex;
-    flex-direction: column;
-  }
-}
 
 
 /* ============================================================
@@ -79,26 +61,16 @@
   z-index: 2;
 }
 
-/* Mobile natural scroll behavior */
-@media (max-width: 900px) {
-  .lake-chapter {
-    position: relative;
-    height: 80vh;
-    min-height: 500px;
-    opacity: 1;
-    visibility: visible;
-    z-index: 1;
-  }
-}
+/* Removed mobile natural scroll override to preserve sticky logic */
 
 /* Background Image & Overlay */
 .lake-chapter__bg-wrapper {
   position: absolute;
-  width: min(92%, 1200px);
-  height: 75vh;
+  width: 100%;
+  height: 100vh;
   z-index: -1;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: 0;
 }
 
 .lake-chapter__bg {
@@ -133,17 +105,23 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  height: 75vh;
-  width: min(92%, 1200px);
-  padding: var(--space-xl) var(--space-2xl);
+  height: 100vh;
+  width: 100%;
+  padding: var(--space-section) var(--space-xl);
+  max-width: var(--max-width);
+  margin-inline: auto;
 }
 
-@media (max-width: 900px) {
-  .lake-chapter__bg-wrapper, .lake-chapter__content {
-    width: 100%;
-    height: 100%;
-    border-radius: 0;
+@media (max-width: 767px) {
+  .lake-chapter__content {
     padding: var(--space-xl) var(--space-md);
+    padding-bottom: calc(var(--space-xl) + 60px);
+  }
+  .lake-chapter__name {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .lake-chapter__desc {
+    font-size: 15px;
   }
 }
 
@@ -231,43 +209,62 @@
 
 .lakes-progress-rail {
   position: absolute;
-  right: 5%;
+  right: max(4%, 2rem);
   top: 50%;
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 2rem;
   z-index: 10;
 }
 
+.lakes-progress-track {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(-50%);
+  z-index: -2;
+}
+
 .lakes-progress-dot {
-  width: 4px;
-  height: 4px;
+  position: relative;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 0 0 rgba(109, 181, 196, 0);
+  z-index: 2;
 }
 
 .lakes-progress-dot.is-active {
   background: var(--color-glacier);
-  transform: scale(2);
+  transform: scale(1.5);
+  box-shadow: 0 0 0 4px rgba(109, 181, 196, 0.25);
 }
 
 .lakes-progress-line {
   position: absolute;
   top: 0;
-  left: 1.5px; /* centers the 1px line in the 4px dot */
+  left: 50%;
   width: 1px;
   height: 100%;
   background: var(--color-glacier);
   transform-origin: top;
-  transform: scaleY(0);
+  transform: scaleY(0) translateX(-50%);
   z-index: -1;
+  box-shadow: 0 0 8px var(--color-glacier);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 767px) {
   .lakes-progress-rail {
-    display: none;
+    right: 1rem;
+    transform: translateY(-50%) scale(0.7);
+    transform-origin: right center;
   }
 }
 

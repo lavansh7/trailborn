@@ -1,12 +1,12 @@
 /* ============================================================
-   Contact / Enquiry Form — Mobile-First
+   Contact / Enquiry Form: Mobile-First
    ============================================================ */
 
 .contact__form {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-md);
-  max-width: 760px;
+  gap: var(--space-lg);
+  max-width: 800px;
   margin-inline: auto;
 }
 
@@ -18,11 +18,12 @@
 
 .form-label {
   font-family: var(--font-display);
-  font-size: var(--text-xs);
-  font-weight: 400;
+  font-size: 11px;
+  font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.5em;
 }
 
 .form-required {
@@ -30,24 +31,26 @@
 }
 
 .form-input {
-  padding: 0.75em 1em;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  padding: 1em 1.25em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
   color: var(--color-text);
   border-radius: var(--radius-sm);
   font-size: 16px; /* prevent iOS zoom */
-  transition: border-color var(--transition-fast);
-  min-height: 44px;
+  transition: all 0.3s ease;
+  min-height: 52px;
   width: 100%;
 }
 
 .form-input:focus {
-  border-color: var(--color-glacier);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.02);
+  outline: none;
 }
 
 .form-input::placeholder {
-  color: var(--color-muted);
-  opacity: 0.5;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .form-select {
@@ -113,28 +116,60 @@
 }
 
 .form-checkbox {
+  appearance: none;
   flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  margin-top: 2px;
-  accent-color: var(--color-glacier);
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
   cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  margin-top: 2px;
+}
+
+.form-checkbox:checked {
+  background: var(--color-glacier);
+  border-color: var(--color-glacier);
+}
+
+.form-checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000;
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .form-label--checkbox {
   font-size: var(--text-sm);
   text-transform: none;
   letter-spacing: 0;
-  color: var(--color-muted);
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
   cursor: pointer;
+  margin-bottom: 0;
 }
 
 /* Submit */
 .btn.contact__submit {
   width: 100%;
-  margin-top: var(--space-md);
+  margin-top: var(--space-lg);
   position: relative;
+  min-height: 56px;
+  font-size: var(--text-base);
+  letter-spacing: 0.1em;
+  background: var(--color-glacier);
+  color: #000;
+  font-weight: 600;
+}
+
+.btn.contact__submit:hover {
+  background: #fff;
 }
 
 .btn.contact__submit.is-loading {
@@ -251,6 +286,8 @@
 @media (min-width: 600px) {
   .contact__form {
     grid-template-columns: 1fr 1fr;
+    column-gap: var(--space-xl);
+    row-gap: var(--space-lg);
   }
 
   .form-field--full {

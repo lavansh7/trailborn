@@ -61,17 +61,20 @@
    ============================================================ */
 
 .route-split-layout {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
-  padding-block: var(--space-2xl);
-  gap: var(--space-lg);
+  padding-block: var(--space-lg);
+  padding-top: calc(var(--space-lg) + 60px); /* Account for mobile browser UI */
+  gap: var(--space-md);
 }
 
 @media (min-width: 900px) {
   .route-split-layout {
+    display: grid;
     grid-template-columns: 42fr 58fr; /* Exactly 42% left panel */
+    padding-block: var(--space-2xl);
     gap: var(--space-2xl);
   }
 }
@@ -82,7 +85,8 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  height: 60vh; /* Mobile height */
+  flex: 1; /* Take up available space */
+  min-height: 0;
   width: 100%;
 }
 
@@ -90,7 +94,8 @@
   .route-content-col {
     height: 100%;
     width: 100%; /* Uses the full width of its 42% grid column */
-    max-width: 480px;
+    max-width: 540px;
+    padding-left: var(--space-2xl);
     padding-right: var(--space-xl);
   }
 }
@@ -145,12 +150,12 @@
 /* 2. Elegant Title */
 .route-day-title {
   font-family: var(--font-display);
-  font-size: var(--text-4xl);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.1;
   letter-spacing: -0.02em;
   color: #fff;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   text-shadow: 0 4px 20px rgba(0,0,0,0.5);
   white-space: pre-line;
 }
@@ -162,12 +167,12 @@
   flex-wrap: wrap;
   gap: 0.4rem;
   font-family: var(--font-display);
-  font-size: 11px; /* Even smaller typography */
+  font-size: 10px; /* Even smaller typography on mobile */
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.6);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
   line-height: 1.6;
 }
 
@@ -191,8 +196,8 @@
 .route-day-metrics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
-  margin-bottom: var(--space-xl);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
 }
 
 .metric-box {
@@ -222,10 +227,10 @@
 
 /* 5. Editorial Description */
 .route-day-desc {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.85);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
   max-width: 100%;
 }
 
@@ -253,7 +258,7 @@
 .route-map-col {
   position: relative;
   width: 100%;
-  height: 40vh; /* Mobile height */
+  height: 45vh; /* Mobile specific height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,6 +268,27 @@
   .route-map-col {
     height: 100%;
     max-width: 1000px; /* Constrain SVG */
+  }
+  .route-map-topo,
+  .route-map-svg {
+    transform: scale(1) translateY(0); /* Better fit for desktop */
+  }
+  .route-day-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-lg);
+  }
+  .route-day-path-line {
+    font-size: 11px;
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-lg);
+  }
+  .route-day-metrics {
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+  }
+  .route-day-desc {
+    font-size: 16px;
+    margin-bottom: var(--space-xl);
   }
 }
 

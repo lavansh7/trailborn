@@ -88,6 +88,7 @@ export default function LakesSection() {
           
           {/* Vertical Progress Rail */}
           <div className="lakes-progress-rail" aria-hidden="true">
+            <div className="lakes-progress-track" />
             {lakes.map((lake, i) => (
               <div 
                 key={`rail-${lake.id}`} 
@@ -96,7 +97,7 @@ export default function LakesSection() {
             ))}
             <div 
               className="lakes-progress-line" 
-              style={{ transform: `scaleY(${progress})` }}
+              style={{ transform: `scaleY(${progress}) translateX(-50%)` }}
             />
           </div>
 

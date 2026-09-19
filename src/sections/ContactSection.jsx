@@ -105,7 +105,10 @@ export default function ContactSection() {
         // Real API request
         const response = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
           body: JSON.stringify(form),
         });
 
@@ -134,7 +137,7 @@ export default function ContactSection() {
           <div className="contact__success" role="status" aria-live="polite">
             <h3 className="contact__success-title">Enquiry Received</h3>
             <p className="contact__success-text">
-              Thanks — we'll be in touch within 24 hours.
+              Thanks, we'll be in touch within 24 hours.
             </p>
           </div>
         ) : (
@@ -285,7 +288,7 @@ export default function ContactSection() {
               >
                 <option value="">Select</option>
                 <option value="Yes, I have my own gear">Yes, I have my own gear</option>
-                <option value="Partial — some items">Partial — some items</option>
+                <option value="Partial, some items">Partial, some items</option>
                 <option value="No, I'll need to rent/borrow">No, I'll need to rent/borrow</option>
               </select>
               {errors.ownGear && <span className="form-error" id="err-own-gear" role="alert">{errors.ownGear}</span>}

@@ -6,20 +6,21 @@ import LakesSection from './sections/LakesSection';
 import RouteSection from './sections/RouteSection';
 import GearSection from './sections/GearSection';
 import WhoShouldJoin from './sections/WhoShouldJoin';
-import Testimonials from './sections/Testimonials';
 import ContactSection from './sections/ContactSection';
 import BendingMarquee from './components/BendingMarquee';
 import Footer from './sections/Footer';
+import Header from './components/Header';
 
 export default function App() {
   return (
     <>
-      <a className="sr-only" href="#overview">
+      <button 
+        className="sr-only" 
+        onClick={() => document.getElementById('overview')?.scrollIntoView()}
+      >
         Skip to main content
-      </a>
-      <header className="site-header">
-        <img src="/assets/logo/logo.png" alt="TrailBorn Logo" className="site-logo" />
-      </header>
+      </button>
+      <Header />
       <main>
         <Hero />
         <UrgencyBanner />
@@ -29,7 +30,6 @@ export default function App() {
         <RouteSection />
         <GearSection />
         <WhoShouldJoin />
-        <Testimonials />
         <ContactSection />
       </main>
       <Footer />

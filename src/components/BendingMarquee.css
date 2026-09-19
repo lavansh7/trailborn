@@ -24,23 +24,28 @@
 }
 
 .bending-marquee-svg {
-  /* On desktop, spans 120vw to bleed off edges naturally */
-  width: 120vw;
-  /* Minimum width prevents the SVG from shrinking so much that text becomes illegible on mobile */
-  min-width: 1200px; /* Reduced from 1600px */
-  max-height: 260px; /* Reduced to tightly wrap the gentler curve */
+  width: 110vw;
+  min-width: 1200px;
+  max-width: 1920px;
+  max-height: 220px;
   /* Very subtle drop shadow to ground the ribbon */
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4));
   /* Subtly breathes vertically to feel like physical fabric */
   animation: ribbon-breathe 8s ease-in-out infinite alternate;
 }
 
+@media (max-width: 767px) {
+  .bending-marquee-svg {
+    min-width: 800px; /* Scale down slightly on mobile so it doesn't look cut off */
+  }
+}
+
 .bending-marquee-text {
   font-family: var(--font-display);
-  font-size: 32px; /* Reduced from 48px */
+  font-size: 28px;
   font-weight: 600;
-  fill: #111; /* Deep charcoal for massive contrast on the white ribbon */
-  letter-spacing: 0.05em;
+  fill: #111;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 

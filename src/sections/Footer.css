@@ -18,6 +18,7 @@
   height: 48px;
   width: auto;
   margin-bottom: var(--space-md);
+  filter: invert(1);
 }
 
 .footer__tagline {
@@ -33,6 +34,13 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xl);
+}
+
+@media (max-width: 767px) {
+  .footer__links {
+    gap: var(--space-lg);
+    flex-direction: column;
+  }
 }
 
 .footer__col-title {
@@ -68,7 +76,6 @@
 
 .footer__bottom {
   padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border);
 }
 
 .footer__copy {

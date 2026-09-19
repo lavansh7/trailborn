@@ -50,10 +50,12 @@ export default function GearSection() {
             <ul className="gear__list" role="list">
               {gearProvided.map((g) => (
                 <li className="gear__item" key={g.id}>
-                  <span className="gear__icon" aria-hidden="true">
-                    {ICONS[g.icon] || ICONS.tent}
-                  </span>
-                  <div>
+                  <div className="gear__icon-wrap" aria-hidden="true">
+                    <span className="gear__icon">
+                      {ICONS[g.icon] || ICONS.tent}
+                    </span>
+                  </div>
+                  <div className="gear__item-content">
                     <strong className="gear__item-name">{g.item}</strong>
                     <p className="gear__item-desc">{g.description}</p>
                   </div>
@@ -68,8 +70,10 @@ export default function GearSection() {
             <ul className="gear__list" role="list">
               {gearBring.map((g) => (
                 <li className="gear__item gear__item--bring" key={g.id}>
-                  <span className="gear__check" aria-hidden="true">✓</span>
-                  <div>
+                  <div className="gear__check-wrap" aria-hidden="true">
+                    <span className="gear__check">✓</span>
+                  </div>
+                  <div className="gear__item-content">
                     <strong className="gear__item-name">{g.item}</strong>
                     <p className="gear__item-desc">{g.description}</p>
                   </div>

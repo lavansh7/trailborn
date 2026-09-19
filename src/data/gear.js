@@ -14,7 +14,7 @@ export const gearProvided = [
   {
     id: 'meals',
     item: 'All Meals',
-    description: 'Nutritious meals throughout the trek — breakfast, lunch, dinner and hot beverages.',
+    description: 'Nutritious meals throughout the trek: breakfast, lunch, dinner and hot beverages.',
     icon: 'meal',
   },
   {
@@ -71,7 +71,7 @@ export const gearBring = [
   {
     id: 'sunscreen',
     item: 'Sunscreen & Sunglasses',
-    description: 'High SPF sunscreen and UV-protection sunglasses — essential at altitude.',
+    description: 'High SPF sunscreen and UV-protection sunglasses (essential at altitude).',
   },
   {
     id: 'personal-meds',

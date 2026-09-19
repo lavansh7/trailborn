@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useLayoutEffect } from 'react';
 import { itinerary, routeConditionNote } from '../data/itinerary';
+import StrokeText from '../components/StrokeText';
 import './RouteSection.css';
 
 // SVG Configuration
@@ -159,13 +160,22 @@ export default function RouteSection() {
     <section className="route-experience section" id="route" aria-labelledby="route-heading">
       <div className="container">
         <p className="section-label">Route &amp; Itinerary</p>
-        <h2 id="route-heading" className="section-heading">
-          The Traverse
-        </h2>
-        <aside className="route__condition-notice" role="note">
-          <span className="route__condition-icon" aria-hidden="true">⛰️</span>
-          <p>{routeConditionNote}</p>
-        </aside>
+        <StrokeText
+          text="THE TRAVERSE"
+          strokeColor="#6db5c4"
+          fillColor="#f0ede8"
+          strokeWidth={1.4}
+          drawDuration={1.6}
+          fillDelay={0.2}
+          stagger={0.05}
+          ease="power2.out"
+          trigger="scroll"
+          fillMode="wipe"
+          fontSize={80}
+          fontWeight={600}
+          letterSpacing={0}
+          className="section-heading"
+        />
       </div>
 
       {/* 400vh Scroll Container */}

@@ -46,17 +46,23 @@ export default function Hero() {
 
           {/* Subheadline */}
           <p className="hero__sub hero__anim-up" style={{ animationDelay: '0.6s' }}>
-            An alpine-style journey through the hidden landscapes of the Dhauladhar — where every ridge leads somewhere wild.
+            An alpine-style journey through the hidden landscapes of the Dhauladhar, where every ridge leads somewhere wild.
           </p>
 
           {/* CTA Buttons */}
           <div className="hero__actions hero__anim-up" style={{ animationDelay: '0.8s' }}>
-            <a className="hero__btn hero__btn--primary" href="#overview">
+            <button 
+              className="hero__btn hero__btn--primary" 
+              onClick={() => document.getElementById('overview')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               EXPLORE THE TREK &rarr;
-            </a>
-            <a className="hero__btn hero__btn--secondary" href="#lakes">
+            </button>
+            <button 
+              className="hero__btn hero__btn--secondary" 
+              onClick={() => document.getElementById('lakes')?.scrollIntoView({ behavior: 'smooth' })}
+            >
               VIEW ALL TREKS
-            </a>
+            </button>
           </div>
           
         </div>

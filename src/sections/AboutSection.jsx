@@ -18,10 +18,10 @@ export default function AboutSection() {
             Why This Trek Is Different
           </h2>
           <p className="about__description">
-            Most Dhauladhar treks visit a single destination — Triund, Indrahar Pass, or Kareri Lake alone. The 7 Lakes Trek is different. It is a continuous traverse across the high ridgeline connecting seven distinct glacial lakes, crossing from McLeod Ganj to Kareri through terrain that most trekkers never see.
+            Most Dhauladhar treks visit a single destination: Triund, Indrahar Pass, or Kareri Lake alone. The 7 Lakes Trek is different. It is a continuous traverse across the high ridgeline connecting seven distinct glacial lakes, crossing from McLeod Ganj to Kareri through terrain that most trekkers never see.
           </p>
           <p className="about__description">
-            This is not a loop. It is a point-to-point alpine-style trek — self-sufficient, mobile camps, no fixed lodges, no teahouses. You carry what you need and move through some of the most remote and visually stunning high-altitude landscape in Himachal Pradesh.
+            This is not a loop. It is a point-to-point alpine-style trek: self-sufficient, mobile camps, no fixed lodges, no teahouses. You carry what you need and move through some of the most remote and visually stunning high-altitude landscape in Himachal Pradesh.
           </p>
         </div>
 
